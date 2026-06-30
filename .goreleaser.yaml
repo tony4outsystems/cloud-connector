@@ -1,6 +1,6 @@
 # test this goreleaser config with:
 # - cd cloud-connector
-# - goreleaser --clean --snapshot --config .goreleaser.yml
+# - goreleaser --clean --snapshot --config .goreleaser.yaml
 version: 2
 project_name: outsystemscc
 before:
@@ -11,11 +11,18 @@ builds:
   - env:
       - CGO_ENABLED=0
     goos:
-      - linux      
+      - linux
+      - windows
+    goarch:
+      - 386
+      - amd64
+      - arm64
 dockers: 
   - image_templates: 
     - "ghcr.io/outsystems/{{ .ProjectName }}:{{ .Version }}"
     - "ghcr.io/outsystems/{{ .ProjectName }}:latest"
+    goos: linux
+    goarch: amd64
     build_flag_templates:
     - --platform=linux/amd64
     - --label=org.opencontainers.image.title=OutSystems Cloud Connector

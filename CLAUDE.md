@@ -33,7 +33,7 @@ cloud-connector/
   go.mod / go.sum      -- Go module; note the `replace` directive pinning chisel
                           to the OutSystems fork (github.com/outsystems/chisel)
   Dockerfile           -- Minimal Alpine image with static binary at /app/outsystemscc
-  .goreleaser.yaml     -- Release config: Linux binaries (386/amd64/arm64) + Docker image
+  .goreleaser.yaml     -- Release config: Linux/Windows binaries (386/amd64/arm64) + Docker image
   .github/CODEOWNERS   -- PR reviewers: global-routing-and-security, cloud-enablement-services
   .github/dependabot.yml -- Monthly Go module dependency updates
   FAQ.md               -- Deployment examples (Azure Container Instances, network setup)
@@ -64,7 +64,7 @@ cloud-connector/
 
 ## Common Pitfalls
 
-- **Linux-only binaries**: GoReleaser is configured to build only for Linux (`goos: linux`). Windows/macOS users run via WSL or Docker. Do not add other OS targets without product decision.
+- **Release targets**: GoReleaser builds Linux and Windows binaries for `386`, `amd64`, and `arm64`. Docker images still use the Linux `amd64` artifact.
 - **Duplicate local ports are rejected**: `validateRemotes` enforces unique local ports across all remote definitions. Two remotes cannot share the same local port even if they point to different hosts.
 - **No inbound firewall rules**: The tool initiates all connections outbound. Never introduce logic that listens on a port or requires inbound connectivity.
 - **Proxy passthrough**: The `--proxy` flag configures both the resty HTTP client (for URL resolution) and the chisel client (for the tunnel). Both must go through the same proxy.

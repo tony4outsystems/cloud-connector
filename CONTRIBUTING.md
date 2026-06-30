@@ -25,7 +25,7 @@ Build the binary:
 go build -o outsystemscc .
 ```
 
-Test a release build locally with GoReleaser (produces Linux binaries and Docker images):
+Test a release build locally with GoReleaser (produces Linux and Windows binaries, plus Docker images):
 
 ```bash
 goreleaser --clean --snapshot --config .goreleaser.yaml
@@ -67,7 +67,7 @@ Branch names follow the pattern `<JIRA-ID>` or `feature/<JIRA-ID>` (e.g., `RDODC
 Releases are managed with [GoReleaser](https://goreleaser.com/) and follow semantic versioning (tags like `v2.0.3`). The release pipeline:
 
 1. Runs `go mod tidy` and `go generate ./...` as pre-build hooks.
-2. Cross-compiles Linux binaries for `amd64`, `arm64`, and `386`.
+2. Cross-compiles Linux and Windows binaries for `amd64`, `arm64`, and `386`.
 3. Builds and pushes a Docker image to `ghcr.io/outsystems/outsystemscc`.
 4. Generates a changelog (excluding `docs:` and `test:` prefixed commits).
 

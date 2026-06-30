@@ -40,10 +40,10 @@ To learn more about the cloud-native architecture of ODC go to the [ODC document
 
 _Minimum system requirement per `outsystemscc` instance: 2 GB RAM, 2x 1GHz+ CPU._
 
-To install, use either the binary or Docker option. Run the binary on Linux, or use the Docker image on any OS that supports Docker. Running `outsystemscc` as a Docker image offers several advantages if your system supports it:
+To install, use either the binary or Docker option. Run the binary on Linux or Windows, or use the Docker image on any OS that supports Docker. Running `outsystemscc` as a Docker image offers several advantages if your system supports it:
 
 * You always run the latest release. You don't need to reinstall each new release.
-* You can run `outsystemscc` on any Linux/Windows(within a WSL environment) system that supports Docker:
+* You can run `outsystemscc` on any Linux or Windows system that supports Docker:
     * For example, if you are using Windows, you can run `outsystemscc` within Windows Subsystem for Linux (WSL), where you can pull and run the Docker image directly from the WSL environment.
 * Without additional configuration `outsystemscc` starts with the Docker daemon on system boot.
 * For advanced use cases, you can use Kubernetes for orchestration.
@@ -52,7 +52,7 @@ After install, ensure you configure the firewall for the private network(s) corr
 
 ### <a name="binary"></a> Binary
 
-Download the latest release from the [releases page](https://github.com/OutSystems/cloud-connector/releases/latest). There are precompiled binaries available for Linux on i386 (32-bit), amd64 (64-bit), and arm64 (64-bit). You can run the binary on any Windows version that supports [WSL](https://docs.microsoft.com/en-us/windows/wsl/).
+Download the latest release from the [releases page](https://github.com/OutSystems/cloud-connector/releases/latest). There are precompiled binaries available for Linux and Windows on i386 (32-bit), amd64 (64-bit), and arm64 (64-bit).
 
 ⚠️ **Note**: Some antivirus software may incorrectly flag the `outsystemscc` binary as malicious. This is a known false positive. If your organization’s security policies permit, you can safely proceed by adding an exception in your antivirus software.
 
