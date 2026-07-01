@@ -4,7 +4,7 @@
 
 - **Go 1.25.1+** -- see [go.dev/dl](https://go.dev/dl/) for installation
 - **Git**
-- **Docker** (optional, for building container images)
+- **Docker** (optional, for testing container usage locally)
 - **GoReleaser** (optional, for testing release builds locally)
 
 ## Getting Started
@@ -25,7 +25,7 @@ Build the binary:
 go build -o outsystemscc .
 ```
 
-Test a release build locally with GoReleaser (produces Linux, macOS, and Windows binaries, plus Docker images):
+Test a release build locally with GoReleaser (produces Linux, macOS, and Windows binaries):
 
 ```bash
 goreleaser --clean --snapshot --config .goreleaser.yaml
@@ -68,8 +68,17 @@ Releases are managed with [GoReleaser](https://goreleaser.com/) and follow seman
 
 1. Runs `go mod tidy` and `go generate ./...` as pre-build hooks.
 2. Cross-compiles Linux and Windows binaries for `amd64`, `arm64`, and `386`, plus macOS binaries for `amd64` and `arm64`.
-3. Builds and pushes a Docker image to `ghcr.io/outsystems/outsystemscc`.
-4. Generates a changelog (excluding `docs:` and `test:` prefixed commits).
+3. Generates checksums and a changelog (excluding `docs:` and `test:` prefixed commits).
+4. Skips building and pushing Docker images.
+
+To publish a release, push a semantic version tag:
+
+```bash
+git tag v2.0.4
+git push origin v2.0.4
+```
+
+The GitHub Actions release workflow runs tests, builds the release artifacts, uploads the binaries to the GitHub Release for that tag, and skips Docker image publishing.
 
 ## Dependency Management
 

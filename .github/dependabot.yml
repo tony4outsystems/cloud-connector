@@ -15,3 +15,12 @@ updates:
       AllDependencies:
         patterns:
           - "*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    rebase-strategy: "disabled"
+    commit-message:
+      prefix: "RDODCP-198"
